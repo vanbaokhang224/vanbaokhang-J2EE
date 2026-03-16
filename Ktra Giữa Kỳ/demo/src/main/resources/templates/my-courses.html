@@ -1,0 +1,18 @@
+<h2>My Courses</h2>
+
+<table border="1">
+
+<tr>
+<th>Course ID</th>
+<th>Enroll Date</th>
+</tr>
+
+<tr th:each="e : ${enrollments}">
+
+<td th:text="${e.courseId}"></td>
+
+<td th:text="${e.enrollDate}"></td>
+
+</tr>
+
+</table>

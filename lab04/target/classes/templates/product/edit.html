@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{_layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sửa sản phẩm</title>
+</head>
+
+<body>
+<div layout:fragment="content" class="container body-content">
+
+    <form th:action="@{/products/edit}"
+          th:object="${product}"
+          method="post"
+          class="form"
+          enctype="multipart/form-data">
+
+        <input type="hidden" th:field="*{id}"/>
+
+        <!-- Tên -->
+        <div class="form-group">
+            <label>Tên</label>
+            <input class="form-control"
+                   type="text"
+                   th:field="*{name}">
+        </div>
+
+        <!-- Giá -->
+        <div class="form-group">
+            <label>Giá</label>
+            <input class="form-control"
+                   type="number"
+                   th:field="*{price}">
+        </div>
+
+        <!-- Ảnh hiện tại -->
+        <div class="form-group">
+            <label>Ảnh hiện tại</label><br>
+            <img th:src="@{/images/} + ${product.image}"
+                 width="150"
+                 height="120"
+                 alt="Ảnh sản phẩm">
+        </div>
+
+        <!-- Ảnh mới -->
+        <div class="form-group">
+            <label>Ảnh mới</label>
+            <input class="form-control"
+                   type="file"
+                   name="imageProduct"
+                   accept="image/png,image/jpeg">
+        </div>
+
+        <!-- Danh mục -->
+        <div class="form-group">
+            <label>Danh mục</label>
+            <select th:field="*{category.id}" class="form-control">
+                <option th:each="category : ${categories}"
+                        th:value="${category.id}"
+                        th:text="${category.name}">
+                </option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success">
+            Cập nhật sản phẩm
+        </button>
+
+        <a th:href="@{/products}" class="btn btn-secondary">
+            Hủy
+        </a>
+
+    </form>
+
+</div>
+</body>
+</html>

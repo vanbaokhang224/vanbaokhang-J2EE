@@ -1,0 +1,13 @@
+<h2>Course Form</h2>
+
+<form th:action="@{/admin/courses/save}" th:object="${course}" method="post">
+
+<input type="hidden" th:field="*{id}" />
+
+<input type="text" th:field="*{name}" placeholder="Course Name"/>
+
+<input type="number" th:field="*{credits}" placeholder="Credits"/>
+
+<button type="submit">Save</button>
+
+</form>

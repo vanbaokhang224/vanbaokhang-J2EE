@@ -1,0 +1,29 @@
+<h2>Course List</h2>
+
+<a href="/admin/courses/create">Add Course</a>
+
+<table border="1">
+
+<tr>
+<th>Name</th>
+<th>Credits</th>
+<th>Action</th>
+</tr>
+
+<tr th:each="c : ${courses}">
+
+<td th:text="${c.name}"></td>
+
+<td th:text="${c.credits}"></td>
+
+<td>
+
+<a th:href="@{/admin/courses/edit/{id}(id=${c.id})}">Edit</a>
+
+<a th:href="@{/admin/courses/delete/{id}(id=${c.id})}">Delete</a>
+
+</td>
+
+</tr>
+
+</table>
